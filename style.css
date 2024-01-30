@@ -1,0 +1,12 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+    overflow:hidden;
+    text-align: center;
+    background: darkgray
+}
+#myCanvas{
+    background-color: #000;
+    background-color: lightgray;
+}
