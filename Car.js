@@ -8,10 +8,25 @@ class Car {
     this.speed = 0;
     this.angle = 0;
 
-    this.left = false;
-    this.right = false;
-    this.up = false;
-    this.down = false;
+    this.controls = new Controls();
+  }
+
+  update() {    
+    if (this.controls.up) {
+      this.y += 0.1;
+    }
+    if (this.controls.down) {
+      this.y -= 0.1;
+    }
+    if (this.controls.left) {
+      this.x -= 0.1;
+    }
+    if (this.controls.right) {
+      this.x += 0.1;
+    }
+
+    this.x += this.speed * Math.cos(this.angle);
+    this.y += this.speed * Math.sin(this.angle);
   }
 
   draw(ctx) {
