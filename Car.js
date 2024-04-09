@@ -54,6 +54,8 @@ class Car {
 
     this.y = this.y - this.speed * Math.cos(this.angle);
     this.x = this.x - this.speed * Math.sin(this.angle);
+
+    //console.log(this.angle);
   }
 
   draw(ctx) {
