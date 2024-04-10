@@ -51,4 +51,22 @@ function getRandomColor(){
   const hue=290+Math.random()*260;
   return "hsl("+hue+", 100%, 60%)";
 }
-              
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function getRandomFloat(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+Math.seed = function(s) {
+  return function() {
+    s = Math.sin(s) * 10000
+    return s - Math.floor(s)
+  }
+}
+
+function setSeed(seed) {
+  Math.random = Math.seed(seed)
+}
