@@ -4,9 +4,14 @@ body{
     font-family: sans-serif;
     overflow:hidden;
     text-align: center;
-    background: darkgray
+    background: darkgray;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
-#myCanvas{
-    background-color: #000;
-    background-color: lightgray;
+#networkCanvas{
+    background:black;
+}
+#carCanvas{
+    background:lightgray;
 }
