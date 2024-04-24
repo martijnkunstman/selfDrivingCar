@@ -1,5 +1,5 @@
 class Car{
-    constructor(x,y,width,height,controlType="DUMMY",maxSpeed=3,color="blue"){
+    constructor(x,y,width,height,controlType="DUMMY",maxSpeed=4,color="blue"){
         this.x=x;
         this.y=y;
         this.width=width;
@@ -15,7 +15,7 @@ class Car{
         this.controlType=controlType;
 
         this.useBrain=controlType=="AI";
-
+``
         if(controlType!="DUMMY"){
             this.sensor=new Sensor(this);
             this.brain=new NeuralNetwork(
@@ -134,6 +134,10 @@ class Car{
             if(this.controls.right){
                 this.angle-=0.03*flip;
             }
+        }
+
+        if (this.controlType=="DUMMY"){
+            //this.angle+=Math.random()*0.1-0.05;
         }
 
         this.x-=Math.sin(this.angle)*this.speed;
