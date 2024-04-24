@@ -73,7 +73,7 @@ class Car{
         }
         if(this.controlType!="DUMMY"){
             //change max speed based on position of the road, the further the car is from the center, the slower it goes
-            this.maxSpeed=this.maxSpeedInit*(1-Math.abs(200-this.x)/800);            
+            this.maxSpeed=this.maxSpeedInit*(1-Math.abs(300-this.x)/800);            
         }
     }
 
