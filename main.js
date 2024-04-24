@@ -22,7 +22,7 @@ if (trainedBrain) {
   for (let i = 0; i < cars.length; i++) {
     cars[i].brain = JSON.parse(trainedBrain);
     if (i != 0) {
-      NeuralNetwork.mutate(cars[i].brain, 0.05);
+      NeuralNetwork.mutate(cars[i].brain, 0.02);
     }
   }
 }
