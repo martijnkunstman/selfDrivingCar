@@ -1,13 +1,16 @@
 class Car{
-    constructor(x,y,width,height,controlType="DUMMY",maxSpeed=4,color="blue"){
+    constructor(x,y,width,height,controlType="DUMMY",maxSpeed=4,color="blue",id=0){
         this.x=x;
         this.y=y;
         this.width=width;
         this.height=height;
 
+        this.id=id;
+
         this.speed=0;
         this.acceleration=0.2;
         this.maxSpeed=maxSpeed;
+        this.maxSpeedInit=maxSpeed;
         this.friction=0.05;
         this.angle=0;
         this.damaged=false;
@@ -47,6 +50,12 @@ class Car{
             this.#move();
             this.polygon=this.#createPolygon();
             this.damaged=this.#assessDamage(roadBorders,traffic);
+            if (this.damaged)
+            {
+                setTimeout(() => {
+                    this.#resetCar();
+                }, 2000);
+            }
         }
         if(this.sensor){
             this.sensor.update(roadBorders,traffic);
@@ -61,6 +70,10 @@ class Car{
                 this.controls.right=outputs[2];
                 this.controls.reverse=outputs[3];
             }
+        }
+        if(this.controlType!="DUMMY"){
+            //change max speed based on position of the road, the further the car is from the center, the slower it goes
+            this.maxSpeed=this.maxSpeedInit*(1-Math.abs(200-this.x)/800);            
         }
     }
 
@@ -144,9 +157,14 @@ class Car{
         this.y-=Math.cos(this.angle)*this.speed;
     }
 
+    #resetCar(){
+        //get values of the best car's brain
+        removeCar(this.id);
+    }
+
     draw(ctx,drawSensor=false){
         if(this.sensor && drawSensor){
-            this.sensor.draw(ctx);
+            this.sensor.draw(ctx);       
         }
 
         ctx.save();
