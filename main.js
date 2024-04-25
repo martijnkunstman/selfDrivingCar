@@ -121,11 +121,15 @@ function animate(time) {
 
   nCars.innerHTML = cars.length;
 
-  if (cars.length < N/1.5) {
+  if (cars.length < N/1.2) {
    //save best car to localstorage and reload
     console.log("saving");
-   save();
+    save();
     location.reload();
+  }
+  else
+  {
+    requestAnimationFrame(animate);
   }
 
   //networkCtx.lineDashOffset = -time / 50;
@@ -134,5 +138,5 @@ function animate(time) {
   Visualizer.drawNetwork(networkCtx, bestCar.brain);
   
   
-  requestAnimationFrame(animate);
+
 }
