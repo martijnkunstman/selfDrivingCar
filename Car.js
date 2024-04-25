@@ -20,7 +20,7 @@ class Car{
         this.useBrain=controlType=="AI";
 ``
         if(controlType!="DUMMY"){
-            this.maxSpeed=this.maxSpeed*1.5;
+            this.maxSpeedInit=this.maxSpeedInit*1.8;
             this.sensor=new Sensor(this);
             this.brain=new NeuralNetwork(
                 [this.sensor.rayCount,8,8,4]
@@ -74,7 +74,7 @@ class Car{
         }
         if(this.controlType!="DUMMY"){
             //change max speed based on position of the road, the further the car is from the center, the slower it goes
-            //this.maxSpeed=this.maxSpeedInit*(1-Math.abs(300-this.x)/500);            
+            this.maxSpeed=this.maxSpeedInit*(1-Math.abs(200-this.x)/200);            
         }
     }
 
