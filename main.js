@@ -121,6 +121,12 @@ function animate(time) {
 
   nCars.innerHTML = cars.length;
 
+  if (cars.length < N/2) {
+   //save best car to localstorage and reload
+    save();
+    location.reload();
+  }
+
   //networkCtx.lineDashOffset = -time / 50;
  
  
