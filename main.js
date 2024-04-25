@@ -121,9 +121,10 @@ function animate(time) {
 
   nCars.innerHTML = cars.length;
 
-  if (cars.length < N/2) {
+  if (cars.length < N/1.5) {
    //save best car to localstorage and reload
-    save();
+    console.log("saving");
+   save();
     location.reload();
   }
 
