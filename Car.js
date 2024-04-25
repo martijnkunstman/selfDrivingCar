@@ -20,6 +20,7 @@ class Car{
         this.useBrain=controlType=="AI";
 ``
         if(controlType!="DUMMY"){
+            this.maxSpeed=this.maxSpeed*1.5;
             this.sensor=new Sensor(this);
             this.brain=new NeuralNetwork(
                 [this.sensor.rayCount,6,4]
